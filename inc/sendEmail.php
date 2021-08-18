@@ -49,7 +49,7 @@ if($_POST) {
       $mail = mail($siteOwnersEmail, $subject, $message, $headers);
 
 		if ($mail) { echo "OK"; }
-      else { echo "Something went wrong. Please try again, or leave a message on my twitter handle"; }
+      else { echo "Something went wrong. Please try again, or send me a message on twitter"; }
 		
 	} # end if - no validation error
 
