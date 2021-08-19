@@ -43,12 +43,12 @@ if($_POST) {
 	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
 
-   if (!($name or $email or $message)) {
+   if ($name and $email and $message ) {
 
       ini_set("sendmail_from", $siteOwnersEmail); // for windows server
       $mail = mail($siteOwnersEmail, $subject, $message, $headers);
 
-		if ($mail) { echo "OK"; }
+	  if ($mail) { echo "OK"; }
       else { echo "Something went wrong. Please try again, or send me a message on twitter"; }
 		
 	} # end if - no validation error
