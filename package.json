@@ -1,0 +1,25 @@
+{
+  "name": "kds",
+  "version": "1.0.0",
+  "description": "My interactive resume portfolio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KDS-LIMITLESS/KDS.git"
+  },
+  "author": "Kamah Daniel Somtochukwu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KDS-LIMITLESS/KDS/issues"
+  },
+  "homepage": "https://github.com/KDS-LIMITLESS/KDS#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "multiparty": "^4.2.3",
+    "nodemailer": "^6.7.3"
+  }
+}
