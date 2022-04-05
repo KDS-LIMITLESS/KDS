@@ -132,52 +132,60 @@
       animationSpeed: 600,
       randomize: false,
    });
+});
+
 
 /*----------------------------------------------------*/
 /*	contact form
 ------------------------------------------------------*/
 
-   $('form#contactForm button.submit').click(function() {
 
-      $('#image-loader').fadeIn();
+const contactForm = document.querySelector('.contact-form');
+const names = document.getElementById('contactName');
+const email = document.getElementById('contactEmail');
+const subject = document.getElementById('contactSubject');
+const message = document.getElementById('contactMessage');
 
-      var contactName = $('#contactForm #contactName').val();
-      var contactEmail = $('#contactForm #contactEmail').val();
-      var contactSubject = $('#contactForm #contactSubject').val();
-      var contactMessage = $('#contactForm #contactMessage').val();
+contactForm.addEventListener('submit', (e) => {
+   e.preventDefault();
 
-      var data = 'contactName=' + contactName + '&contactEmail=' + contactEmail +
-               '&contactSubject=' + contactSubject + '&contactMessage=' + contactMessage;
+   let formData = {
+      names: names.value,
+      email: email.value,
+      subject: subject.value,
+      message: message.value
+   };
 
-      $.ajax({
+   let xhr = new XMLHttpRequest();
+   xhr.open('POST', 'http://localhost:3000/submit', true);
+   xhr.setRequestHeader('content-type', 'application/json');
+   xhr.onload = function(){
+      console.log(xhr.responseText);
 
-	      type: "POST",
-	      url: "inc/sendMail.js",
-	      data: data,
-	      success: function(msg) {
+      if(xhr.responseText == 'success'){
+         $('#image-loader').fadeOut();
+         $('#message-success').fadeIn(); 
+         names.value = '';
+         email.value = '';
+         subject.value = '';
+         message.value = '';
 
-            // Message was sent
-            if (msg == 'OK') {
-               $('#image-loader').fadeOut();
-               $('#message-warning').hide();
-               $('#contactForm').fadeOut();
-               $('#message-success').fadeIn();   
-            }
-            // There was an error
-            else {
-               $('#image-loader').fadeOut();
-               $('#message-warning').html(msg);
-	            $('#message-warning').fadeIn();
-            }
+      }else{
+         $('#image-loader').fadeOut();
+         //$('#message-warning').html(msg);
+	      $('#message-warning').fadeIn();
+         console.error(Error)
+      }
+   }
+   xhr.send(JSON.stringify(formData));
+   $('#image-loader').fadeIn();
 
-	      }
-
-      });
-      return false;
-   });
+})
 
 
-});
+
+
+
 
 
 
