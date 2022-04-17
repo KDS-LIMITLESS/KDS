@@ -140,7 +140,7 @@
 ------------------------------------------------------*/
 
 
-const contactForm = document.querySelector('.contact-form');
+const contactForm = document.querySelector('contact-form');
 const names = document.getElementById('contactName');
 const email = document.getElementById('contactEmail');
 const subject = document.getElementById('contactSubject');
