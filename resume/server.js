@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 
 
 require('dotenv').config({debug:true});
@@ -9,6 +10,7 @@ const app = express();
 
 app.use(express.static('resume'));
 app.use(express.json())
+app.use(cors())
 
 
 app.get('/', (req, res) =>{

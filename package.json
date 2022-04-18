@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/KDS-LIMITLESS/KDS#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "multiparty": "^4.2.3",
