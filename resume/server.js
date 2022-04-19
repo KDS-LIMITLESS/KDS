@@ -48,10 +48,10 @@ app.post("/submit", (req, res) => {
     });
 
     const mailOptions = {
-        from: req.body.email,
+        from: `${req.body.names} <${req.body.email}>`,
         to: process.env.EMAIL_ID,
         subject: req.body.subject,
-        text: req.body.message
+        text: `<${req.body.email}>: \n \n ${req.body.message}`
     }
 
     transporter.sendMail(mailOptions, (error, info) =>{
@@ -61,6 +61,7 @@ app.post("/submit", (req, res) => {
         }else{
             console.log('Email sent ' + info.response);
             res.send('success')
+            
         }
     })
 });
