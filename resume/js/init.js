@@ -160,8 +160,6 @@ contactForm.addEventListener('submit', (e) => {
    xhr.open('POST', 'https://kamah.herokuapp.com/submit', true);
    xhr.setRequestHeader('content-type', 'application/json');
    xhr.onload = function(){
-      console.log(xhr.responseText);
-
       if(xhr.responseText == 'success'){
          $('#image-loader').fadeOut();
          $('#message-success').fadeIn(); 
