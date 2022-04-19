@@ -1,6 +1,6 @@
 const express = require('express');
+const {google} = require('googleapis')
 const cors = require('cors');
-
 
 require('dotenv').config({debug:true});
 const nodemailer = require('nodemailer')
@@ -11,6 +11,17 @@ const app = express();
 app.use(express.static('resume'));
 app.use(express.json())
 app.use(cors())
+
+
+//OAuth2 Configurations
+const oauth2Client = new google.auth.OAuth2(process.env.CLIENT_ID, 
+    process.env.CLIENT_SECRET, process.env.REDIRECT_URL);
+
+oauth2Client.setCredentials({
+    refresh_token: process.env.REFRESH_TOKEN
+});
+
+const access_token = oauth2Client.getAccessToken()
 
 
 app.get('/', (req, res) =>{
@@ -24,8 +35,15 @@ app.post("/submit", (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
+            type: 'OAuth2',
             user: process.env.EMAIL_ID,
-            pass: process.env.PASS
+            clientId: process.env.CLIENT_ID,
+            clientSecret: process.env.CLIENT_SECRET,
+            refreshToken: process.env.REFRESH_TOKEN,
+            accessToken: access_token
+        },
+        tls: {
+            rejectUnauthorized: false
         }
     });
 
