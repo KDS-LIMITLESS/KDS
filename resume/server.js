@@ -68,5 +68,5 @@ app.post("/submit", (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log(`app listening on port ${process.env.PORT}`);
+    console.log(`app listening on port ${PORT}`);
 });
