@@ -23,7 +23,8 @@
     "express": "^4.17.3",
     "googleapis": "^100.0.0",
     "multiparty": "^4.2.3",
-    "nodemailer": "^6.7.3"
+    "nodemailer": "^6.7.3",
+    "postmark": "^3.0.19"
   },
   "engines": {
     "node": "12.x"

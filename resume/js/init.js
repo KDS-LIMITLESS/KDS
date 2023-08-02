@@ -157,7 +157,7 @@ contactForm.addEventListener('submit', (e) => {
    };
 
    let xhr = new XMLHttpRequest();
-   xhr.open('POST', 'https://kamah.herokuapp.com/submit', true);
+   xhr.open('POST', 'kamah.onrender.com/submit', true);
    xhr.setRequestHeader('content-type', 'application/json');
    xhr.onload = function(){
       if(xhr.responseText == 'success'){
