@@ -24,7 +24,7 @@ app.post("/submit", (req, res) => {
         From: process.env.FROM,
         To: process.env.EMAIL,
         Subject: req.body.subject,
-        HtmlBody: `<h3> mail: <a href="${req.body.email}" </a></h3> <br> <h1> ${req.body.message} </h1>`,
+        HtmlBody: `<h3> mail: ${req.body.email} </h3> <br> <h1> ${req.body.message} </h1>`,
         MessageStream: 'outbound'
     });
     res.status(200).send("success")
