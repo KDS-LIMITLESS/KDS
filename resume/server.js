@@ -21,10 +21,10 @@ app.get('/', (req, res) =>{
 
 app.post("/submit", (req, res) => {
     mail.sendEmail({
-        From: 'cc@uppist.com',
+        From: process.env.FROM,
         To: process.env.EMAIL,
         Subject: req.body.subject,
-        HtmlBody: `<h1> mail: ${req.body.email} <br> ${req.body.text} </h1>`,
+        HtmlBody: `<h3> mail: <a href="${req.body.email}" </a></h3> <br> <h1> ${req.body.message} </h1>`,
         MessageStream: 'outbound'
     });
     res.status(200).send("success")
