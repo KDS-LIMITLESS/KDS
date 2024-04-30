@@ -146,16 +146,18 @@ const email = document.getElementById('contactEmail');
 const subject = document.getElementById('contactSubject');
 const message = document.getElementById('contactMessage');
 
+
 contactForm.addEventListener('submit', (e) => {
    e.preventDefault();
+
 
    let formData = {
       names: names.value,
       email: email.value,
       subject: subject.value,
       message: message.value
-   };
-
+   };   
+   
    let xhr = new XMLHttpRequest();
    xhr.open('POST', '/submit', true);
    xhr.setRequestHeader('content-type', 'application/json');

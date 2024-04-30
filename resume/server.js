@@ -30,6 +30,9 @@ app.post("/submit", (req, res) => {
     res.status(200).send("success")
 });
 
+setTimeout(async function() {
+    console.log("Still running!")
+}, 14 * 60 * 1000)
 
 const PORT = process.env.PORT || 3000;
 
